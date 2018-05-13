@@ -10,6 +10,8 @@ module.exports = function (app, passport) {
 
   app.put("/dashboard/complete/delete", isLoggedIn, userController.userCompleteDelete);
 
+  app.post("/dashboard/edit", isLoggedIn, userController.updateProfile);
+
   app.delete("/dashboard/unlink/:taskId/:userId", isLoggedIn, userController.taskUnlink);
   
 

@@ -1,40 +1,40 @@
 USE peer_pressure_db;
 
-INSERT INTO users (username, firstname, lastname, email)
-VALUES ("PastorOfMuppets", "Keith", "Allmon", "adcatcher73@gmail.com"),
-("StrangerThanFiction", "David", "Lee Roth", "jump@yahoo.com"),
-("Daver", "David", "Narf", "no@yahoo.com"),
-("TheStranger", "Albert", "Camus", "notnauseous@gmail.com"),
-("Writer4Life","Larry", "David", "haha@gmail.com"),
-("IShotFirst", "Han", "Solo", "solo@nono.com");
+INSERT INTO users (username, firstname, lastname, email, image_url)
+VALUES ("PastorOfMuppets", "Keith", "Allmon", "adcatcher73@gmail.com", "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/20708206_10203703099854122_2463177902792792532_n.jpg?_nc_cat=0&oh=0cd3fb9b72df9bc579cb683a903e0db7&oe=5B507F97"),
+("StrangerThanFiction", "David", "Lee Roth", "jump@yahoo.com", "https://images-na.ssl-images-amazon.com/images/I/C1DWo0YTWAS._SL1000_.png"),
+("Daver", "David", "Narf", "no@yahoo.com", "https://pbs.twimg.com/media/COjTEn7VEAEngBK.jpg"),
+("TheStranger", "Albert", "Camus", "notnauseous@gmail.com", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbcY4uAfTXDFPES6iXRAHJJWeeEv1xT49KAQB3-0cGRNj7N6rM"),
+("Writer4Life","Larry", "David", "haha@gmail.com", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL1uaCtQkZCQysqTHoPv969bBKwPjTFvyKRn1c09YHre8wkI9KaQ"),
+("IShotFirst", "Han", "Solo", "solo@nono.com", "https://pbs.twimg.com/profile_images/574496403868647425/84GaJKHk.jpeg");
 
 INSERT INTO Tasks (item_name, category, steps, criteria, created_by)
 VALUES ("Leap Tall Building", "Goal", "Become Superman", "Under your own power, leap a building of at least ten stories", 1),
-("Go to Ireland", "Bucket List", "Get a passport and a plane ticket", "Get on the plane and go", 3),
-("Find Bellybutton", "Task", "Lift up shirt (your own shirt)", "Notice the little divot on the middle of your belly", 1),
+("Go to Ireland", "Bucket List", "Get a passport and a plane ticket", "Get on the plane and go", 1),
+("Find Bellybutton", "Task", "Lift up shirt (your own shirt)", "Notice the little divot on the middle of your belly", 6),
 ("Eat something", "Idea", "Find some food, preferably tasty", "Put food in mouth, masticate, and swallow", 2),
-("Quit smoking", "Goal", "Get rid of ashtrays; Get patches and nicotine gum; Get support of family and friends", "Go six months without smoking at all", 1),
-("Lose ten pounds", "Goal", "Give up tortilla chips", "Lose ten pounds without cutting off a limb to do it", 1),
+("Quit smoking", "Goal", "Get rid of ashtrays; Get patches and nicotine gum; Get support of family and friends", "Go six months without smoking at all", 2),
+("Lose ten pounds", "Goal", "Give up tortilla chips", "Lose ten pounds without cutting off a limb to do it", 2),
 ("Write a novel", "Bucket List", "Develop writing habits; stick to said habits; follow through", "Created finished manuscript of at least 80,000 words", 1),
 ("Nomsayn", "Idea", "Listen and understand", "truly KNOW what I am saying", 1),
 ("Finish this project", "Goal", "Plan the rest of the functionality; set up testing; test; implement", "Deliver finished product next Wednesday", 1),
 ("Spend a month in New Zealand", "Bucket List", "Save money; get time off work; go", "Pics or it didn't happen", 1),
-("Finish reading A Song of Ice and Fire", "Goal", "Try to find it interesting again; hope G.R.R.M doesn't die before it's written", "Read it!", 1),
+("Finish reading A Song of Ice and Fire", "Goal", "Try to find it interesting again; hope G.R.R.M doesn't die before it's written", "Read it!", 3),
 ("Fiddle while Rome burns", "Idea", "Wait for socio-economic collapse; play the fiddle", "Actual collapse, not just politics as usual", 1),
-("Get car registered", "Task", "Pass inspection and emissions test; fix if necessary until it does pass; go to the DMV; suffer", "Stick new sticker on license plate", 1),
+("Get car registered", "Task", "Pass inspection and emissions test; fix if necessary until it does pass; go to the DMV; suffer", "Stick new sticker on license plate", 6),
 ("Get Developer job", "Goal", "Finish bootcamp; Clean up GitHub and LinkedIn; Polish Portfolio", "Land full-time job as developer", 1),
 ("Re-write resume", "Task", "Research good resumes; make changes", "This task never seems complete", 1),
-("Make more coffee", "Task", "Get grounds; fill grounds basket; fill water reservoir; wait", "Sip fresh coffee", 1),
-("Derp", "Bucket List", "Develop writing habits; stick to said habits; follow through", "Created finished manuscript of at least 80,000 words", 1),
-("Whoa", "Idea", "Listen and understand", "truly KNOW what I am saying", 1),
-("Harr", "Goal", "Plan the rest of the functionality; set up testing; test; implement", "Deliver finished product next Wednesday", 1),
-("Sell Things", "Bucket List", "Save money; get time off work; go", "Pics or it didn't happen", 1),
-("Finish being Finnish", "Goal", "Try to find it interesting again; hope G.R.R.M doesn't die before it's written", "Read it!", 1),
-("Fiddle with something", "Idea", "Wait for socio-economic collapse; play the fiddle", "Actual collapse, not just politics as usual", 1),
-("Get outta here!", "Task", "Pass inspection and emissions test; fix if necessary until it does pass; go to the DMV; suffer", "Stick new sticker on license plate", 1),
-("Get bent", "Goal", "Finish bootcamp; Clean up GitHub and LinkedIn; Polish Portfolio", "Land full-time job as developer", 1),
-("Raise Hell", "Task", "Research good resumes; make changes", "This task never seems complete", 1),
-("Make more money", "Task", "Get grounds; fill grounds basket; fill water reservoir; wait", "Sip fresh coffee", 1);
+("Make more coffee", "Task", "Get grounds; fill grounds basket; fill water reservoir; wait", "Sip fresh coffee", 5),
+("Derp", "Bucket List", "Derp; derp some more", "Derp is your way of life", 5),
+("Whoa", "Idea", "Strange things are afoot at the Circle-K", "Travel back in time", 1),
+("Shazam", "Goal", "Iono", "Narf", 1),
+("Sell Things", "Bucket List", "Have things", "Don't have some things you used to have; have money instead", 4),
+("Finish being Finnish", "Goal", "Is this possible?", "Be something else (you can't)", 1),
+("Fiddle with something", "Idea", "Take something apart; put it back together (almost)", "Ride a bike with no handlebars", 1),
+("Get outta here!", "Task", "Be here, then leave", "Don't be there anymore", 4),
+("Get bent", "Goal", "Don't be bent as much as you could be", "Bend", 3),
+("Raise Hell", "Task", "Give birth to Hell", "Raise it to be a reprehensible member of society", 1),
+("Make more money", "Task", "Get a printing press and a fake ID; fake your death; print money", "Sip drinks on a beach in Cancun", 1);
 
 INSERT INTO UserTasks (TaskId, UserId)
 VALUES (1, 1),

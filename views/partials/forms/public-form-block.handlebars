@@ -1,0 +1,38 @@
+<div class="search-btn-div">
+  <button class="search2-div-btn" id="usersearch-tab" onclick="switchForms('usersearch', 'usersearch-tab', 'search2-div')">Search Users</button>
+  <button class="search2-div-btn" id="tasksearch-tab" onclick="switchForms('tasksearch', 'tasksearch-tab', 'search2-div')">Search Tasks</button>
+  <button class="search2-div-btn" id="newtask-tab" onclick="switchForms('new-task-form', 'newtask-tab', 'search2-div')">New Task</button>
+</div>
+
+<form class="search2-div-form" id="usersearch" name="usersearch">
+  <h3>Search Users</h3>
+  <label for="user-search">Username:</label>
+  <input class="underlined-input" type="text" id="user-search">
+  <input type="submit" name="usersearch" value="Submit" id="user-search-btn">
+</form>
+
+<form class="search2-div-form" id="tasksearch" name="tasksearch">
+  <h3>Search Task Items</h3>
+  <label for="user-search">Item Name:</label>
+  <input class="underlined-input" type="text" id="task-search">
+  <input type="submit" name="tasksearch" value="Submit" id="task-search-btn">
+</form>
+
+<form class="search2-div-form" id="new-task-form">
+  <h3>Create New Item</h3>
+  <label for="task-name-input">Item Name:</label>
+  <input class="underlined-input" type="text" name="task-name" id="task-name-input">
+  <label for="task-category">Category:</label>
+  <select name="category-drop" id="task-category">
+    <option class="default-option" value="none-selected">Select an option</option>
+    <option value="Task">Task</option>
+    <option value="Goal">Goal</option>
+    <option value="Bucket List">Bucket List</option>
+    <option value="Idea">Idea</option>
+  </select>
+  <label for="task-steps-input">Steps Needed:</label>
+  <textarea class="underlined-input" name="steps" id="task-steps-input" rows="3"></textarea>
+  <label for="task-criteria-input">Criteria for Completion:</label>
+  <textarea class="underlined-input" name="criteria" id="task-criteria-input" rows="3"></textarea>
+  <input type="submit" value="Submit" id="new-task-btn">
+</form>

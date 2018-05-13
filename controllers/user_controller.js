@@ -1,5 +1,7 @@
 var db = require("../models");
 
+var bCrypt = require('bcrypt-nodejs');
+
 var exports = module.exports = {}
 
 exports.dashboardComplete = function (req, res) {
@@ -13,6 +15,36 @@ exports.dashboardComplete = function (req, res) {
     }
     res.render('complete-dashboard', completeObj);
   })
+}
+
+exports.updateProfile = function (req, res) {
+  var userName = req.body.username || req.user.username;
+  var firstName = req.body.firstname || req.user.firstname;
+  var lastName = req.body.lastname || req.user.lastname;
+  var eMail = req.body.email || req.user.email;
+  var passWord = generateHash(req.body.password) || req.user.password;
+  var imageUrl = req.body.image || req.user.image_url;
+
+  db.User.update({
+    username: userName,
+    firstname: firstName,
+    lastname: lastName,
+    email: eMail,
+    password: passWord,
+    image_url: imageUrl
+  }, {
+      where: { id: req.user.id }
+    })
+    .then(function (result) {
+      if (result.affectedRows-- - 0) {
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 }
 
 exports.dashboardFilter = function (req, res) {
@@ -135,3 +167,7 @@ function updateUserPoints(req, res, callback) {
     }
   });
 }
+
+function generateHash(password) {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+};

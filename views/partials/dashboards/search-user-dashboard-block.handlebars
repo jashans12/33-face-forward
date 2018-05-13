@@ -1,0 +1,21 @@
+<div class="tasks-div">
+
+<div class="empty-header"></div>
+
+  <div class="task-display">
+    <h3>{{user.firstname}}'s Items</h3>
+    <ul>
+
+      {{#each tasks}}
+      <li class="task-li">
+        {{> tasks/each-task-block}}
+      </li>
+      {{/each}}
+      {{#if resultsLength}}
+        <a href="/dashboard/more/{{resultsLength}}" class="show-more-btn">Show More</a>
+      {{/if}}
+
+    </ul>
+  </div>
+
+</div>

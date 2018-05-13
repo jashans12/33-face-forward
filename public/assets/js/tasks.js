@@ -5,25 +5,52 @@ $(function () {
     e.preventDefault();
     var searchTerm = $("#user-search").val().trim();
 
-    $.post(`/search/user`, { username: searchTerm })
-      .then(function (data) {
-        console.log(data);
+    if (!(searchTerm === "")) {
+      $.post(`/search/user`, { username: searchTerm })
+        .then(function (data) {
+          console.log(data);
 
-        $(".tasks-div").html("<h3>Search Results</h3>");
+          $(".filter-btn-nav").html("");
+          $(".task-display").html("<h3>Search Results</h3>");
 
-        for (let i = 0; i < data.length; i++) {
-          const element = data[i];
-          var resDiv = $(`<div class='search-results-div'>
-            <a href='/search/user/${element.username}'>
-            <h4>${element.username}</h4>
-            <h4>${element.firstname} ${element.lastname}</h4>
-            </a></div>`);
-          resDiv.addClass("search-results-div");
-          $(".tasks-div").append(resDiv);
-        }
+          for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            var resDiv = $(`<div class='search-results-div'>            
+            <h4>Username: <a class='search-results-link' href='/search/user/${element.username}'>${element.username}</a></h4>
+            <h4>Name: <a class='search-results-link' href='/search/user/${element.username}'>${element.firstname} ${element.lastname}</a></h4>
+            </div>`);
+            resDiv.addClass("search-results-div");
+            $(".task-display").append(resDiv);
+          }
 
-      });
+        });
 
+    }
+  });
+
+  //  edit profile button
+  $("#profile-update-btn").on("click", function (e) {
+    e.preventDefault();
+    var userName = $("#username-input").val().trim();
+    var firstName = $("#firstname-input").val().trim();
+    var lastName = $("#lastname-input").val().trim();
+    var eMail = $("#email-input").val().trim();
+    var passWord = $("#password-input").val().trim();
+    var iMage = $("#image_url-input").val().trim();
+
+    var updateObject = {
+      username: userName,
+      firstname: firstName,
+      lastname: lastName,
+      email: eMail,
+      password: passWord,
+      image: iMage
+    }
+    
+    $.post(`/dashboard/edit`, updateObject)
+    .then(function (data){
+      location.reload();
+    })
   });
 
   //  button to search tasks - after emtpying the html, put an <h3> back in with Search Results in it
@@ -35,14 +62,14 @@ $(function () {
       .then(function (data) {
         console.log(data);
 
-        $(".tasks-div").html("<h3>Search Results</h3>");
+        $(".filter-btn-nav").html("");
+        $(".task-display").html("<h3>Search Results</h3>");
 
         for (let i = 0; i < data.length; i++) {
           const element = data[i];
           var resDiv = $(`<div class='search-results-div'>
-          <a href='/search/task/${element.item_name}'>
-          <h4>${element.item_name}</h4></a></div>`);
-          $(".tasks-div").append(resDiv);
+          <h4><a class='search-results-link' href='/search/task/${element.item_name}'>${element.item_name}</a></h4></div>`);
+          $(".task-display").append(resDiv);
         }
       });
   });
@@ -59,20 +86,22 @@ $(function () {
     console.log("User ID: " + userId);
     console.log("Category: " + dropdown);
 
-    var newTask = {
-      item_name: taskName,
-      category: dropdown,
-      steps: taskSteps,
-      criteria: taskCriteria,
-      UserId: userId,
-      created_by: userId
-    }
+    if (taskName !== "" && dropdown !== "none-selected") {
+      var newTask = {
+        item_name: taskName,
+        category: dropdown,
+        steps: taskSteps,
+        criteria: taskCriteria,
+        UserId: userId,
+        created_by: userId
+      }
 
-    $.post("/task/new", newTask)
-      .then(function () {
-        console.log("Created new task");
-        location.reload();
-      });
+      $.post("/task/new", newTask)
+        .then(function () {
+          console.log("Created new task");
+          location.reload();
+        });
+    }
 
   });
 

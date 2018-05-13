@@ -6,19 +6,21 @@
   </p>
 </header>
 
+
 <div class="routes-div">
   <h4>Navigation</h4>
-  <a class="routes-link" href="/dashboard" id="all-tasks-btn">My Profile</a>
+  <a class="routes-link" href="/public" id="all-tasks-btn">All Items</a>
+  <a class="routes-link" href="/dashboard">My Profile</a>
 </div>
 
 <div class="main-content">
 
   <div class="task-display-div">
-    {{> dashboards/public-dashboard-block}}
+    {{> dashboards/search-dashboard-block}}
   </div>
 
   <div class="task-form-div">
     {{> forms/public-form-block}}
   </div>
 
-</div> 
+</div>

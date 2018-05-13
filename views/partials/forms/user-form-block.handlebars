@@ -1,0 +1,57 @@
+<div class="search-btn-div">
+  <button class="search-div-btn" id="usersearch-tab" onclick="switchForms('usersearch', 'usersearch-tab', 'search-div')">Search Users</button>
+  <button class="search-div-btn" id="edit-profile-tab" onclick="switchForms('edit-profile', 'edit-profile-tab', 'search-div')">Edit Info</button>
+  <button class="search-div-btn" id="newtask-tab" onclick="switchForms('new-task-form', 'newtask-tab', 'search-div')">New Task</button>
+</div>
+
+<form class="search-div-form" id="edit-profile" name="edit-profile">
+  <h3>Edit My Info</h3>
+  <label for="username">Username:</label>
+  <input class="underlined-input" id="username-input" name="username" type="text" />
+
+  <label for="firstname">First Name:</label>
+  <input class="underlined-input" id="firstname-input" name="firstname" type="text" />
+
+
+  <label for="lastname">Last Name:</label>
+  <input class="underlined-input" id="lastname-input" name="lastname" type="text" />
+
+
+  <label for="email">Email:</label>
+  <input class="underlined-input" id="email-input" name="email" type="text" />
+
+
+  <label for="password">Password:</label>
+  <input class="underlined-input" id="password-input" name="password" type="password" />
+
+  <label for="imageurl">Image Url:</label>
+  <input class="underlined-input" id="image_url-input" name="imageurl" type="imageurl" />
+  <input class="update-btn" value="Submit" id="profile-update-btn">
+
+</form>
+
+<form class="search-div-form" id="usersearch" name="usersearch">
+  <h3>Search Users</h3>
+  <label for="user-search">Username or Name:</label>
+  <input class="underlined-input" type="text" id="user-search">
+  <input type="submit" name="usersearch" value="Submit" id="user-search-btn">
+</form>
+
+<form class="search-div-form" id="new-task-form">
+  <h3>Create New Item</h3>
+  <label for="task-name-input">Item Name:</label>
+  <input class="underlined-input" type="text" name="task-name" id="task-name-input">
+  <label for="task-category">Category:</label>
+  <select name="category-drop" id="task-category">
+    <option class="default-option" value="none-selected">Select an option</option>
+    <option value="Task">Task</option>
+    <option value="Goal">Goal</option>
+    <option value="Bucket List">Bucket List</option>
+    <option value="Idea">Idea</option>
+  </select>
+  <label for="task-steps-input">Steps Needed:</label>
+  <textarea class="underlined-input" name="steps" id="task-steps-input" rows="3"></textarea>
+  <label for="task-criteria-input">Criteria for Completion:</label>
+  <textarea class="underlined-input" name="criteria" id="task-criteria-input" rows="3"></textarea>
+  <input type="submit" value="Submit" id="new-task-btn">
+</form>

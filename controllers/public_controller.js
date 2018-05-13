@@ -37,7 +37,7 @@ exports.searchFilter = function (req, res) {
           }
 
 
-          res.render('search-dashboard', hbsObject);
+          res.render('search-task-dashboard', hbsObject);
         })
 
     } else {
@@ -48,7 +48,7 @@ exports.searchFilter = function (req, res) {
         tasks: data.Tasks
       }
 
-      res.render('search-dashboard', hbsObject);
+      res.render('search-task-dashboard', hbsObject);
     }
 
   });
@@ -67,7 +67,7 @@ exports.getTaskData = function (req, res) {
 exports.getTask = function (req, res) {
   console.log(req.user);
   db.Task.findOne({
-    where: { item_name: req.params.itemname}
+    where: { item_name: req.params.itemname }
   }).then(function (data) {
     console.log(data);
     var searchObject = {
@@ -76,27 +76,32 @@ exports.getTask = function (req, res) {
       tasks: [data.dataValues]
     }
 
-    res.render('search-dashboard', searchObject);
+    res.render('search-task-dashboard', searchObject);
   });
 }
 
 //  Search function to find a single user. This will need more...
 exports.getUserData = function (req, res) {
-  console.log(req.body);
   db.User.findAll({
     limit: 10,
-    where: { username: { [Op.like]: '%' + req.body.username + '%' } }
+    where: {
+      $or: [
+        { username: { like: '%' + req.body.username + '%' } },
+        { firstname: { like: '%' + req.body.username + '%' } },
+        { lastname: { like: '%' + req.body.username + '%' } }
+      ]
+    }
   }).then(function (data) {
     res.json(data);
   });
 }
 
 exports.getUser = function (req, res) {
+  console.log(req.user);
   db.User.findOne({
     include: [db.Task],
     where: { username: req.params.username }
   }).then(function (data) {
-    console.log(data);
 
     var searchObject = {
       logUser: req.user,
@@ -104,7 +109,7 @@ exports.getUser = function (req, res) {
       tasks: data.Tasks
     }
 
-    res.render('search-dashboard', searchObject);
+    res.render('search-user-dashboard', searchObject);
   })
 }
 
@@ -164,7 +169,7 @@ exports.taskRate = function (req, res, sequelize) {
               // if (result.affectedRows === 0) {
               //   return res.status(404).end();
               // } else {
-                createRating(req, res);
+              createRating(req, res);
               // }
             })
             .catch(function (err) {
