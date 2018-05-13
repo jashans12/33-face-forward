@@ -1,0 +1,43 @@
+<header>
+  <h1>face</h1>
+  <h1 class="italicized">forward</h1>
+  <p id="user-name" data-user-id="{{logUser.id}}">logged in as {{logUser.firstname}} &nbsp;&nbsp;|
+    <a class="logout-link" href="/logout">logout</a>
+  </p>
+</header>
+
+
+<div class="routes-div">
+  <a href="/public" id="all-tasks-btn">All Items</a>
+  <a href="/dashboard">My Profile</a>
+</div>
+
+<div class="search-div">
+  <div class="search-btn-div">
+    <button class="search-div-btn" id="usersearch-tab" onclick="switchForms('usersearch', 'usersearch-tab', 'search-div')">Search Users</button>
+    <button class="search-div-btn" id="tasksearch-tab" onclick="switchForms('tasksearch', 'tasksearch-tab', 'search-div')">Search Tasks</button>
+  </div>
+  <div class="search-forms-div">
+    <form class="search-div-form" id="usersearch" name="usersearch">
+      <input class="underlined-input" type="text" id="user-search">
+      <input type="submit" name="usersearch" value="Submit" id="user-search-btn">
+    </form>
+    <form class="search-div-form" id="tasksearch" name="tasksearch">
+      <input class="underlined-input" type="text" id="task-search">
+      <input type="submit" name="tasksearch" value="Submit" id="task-search-btn">
+    </form>
+  </div>
+</div>
+
+<div class="main-content">
+
+
+  <div class="task-form-div">
+    {{> forms/new-task-block}}
+  </div>
+
+  <div class="task-display-div">
+    {{> dashboards/search-dashboard-block}}
+  </div>
+
+</div>

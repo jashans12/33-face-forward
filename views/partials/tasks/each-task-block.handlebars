@@ -1,0 +1,36 @@
+<p id="{{id}}-task-name">
+  {{item_name}}
+</p>
+<p id="{{id}}-category">
+  Item type: {{category}}
+</p>
+<p id="{{id}}-criteria">
+  Completion criteria: {{criteria}}
+</p>
+<p id="{{id}}-rating">
+  Current rating: {{toFixed rating 1}}
+</p>
+<form class="rating-form">
+  <p id="{{id}}-rate-task">Rate this task: </p>
+  <div class="rating-div">
+    <label>1</label>
+    <input name="{{id}}-rate-radio" type="radio" value="1">
+  </div>
+  <div class="rating-div">
+    <label>2</label>
+    <input name="{{id}}-rate-radio" type="radio" value="2">
+  </div>
+  <div class="rating-div">
+    <label>3</label>
+    <input name="{{id}}-rate-radio" type="radio" value="3">
+  </div>
+  <div class="rating-div">
+    <label>4</label>
+    <input name="{{id}}-rate-radio" type="radio" value="4">
+  </div>
+  <div class="rating-div">
+    <label>5</label>
+    <input name="{{id}}-rate-radio" type="radio" value="5">
+  </div>
+  <input type="submit" data-task-id="{{id}}" name="rating-submit" class="rating-submit-btn" value="Rate it!">
+</form>

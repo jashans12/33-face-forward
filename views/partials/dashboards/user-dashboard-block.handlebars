@@ -1,0 +1,29 @@
+<div class="tasks-div">
+
+  <h3>My Items</h3>
+  <nav class="filter-btn-nav">
+    <h4>Filter By:</h4>
+    <a href="/dashboard" class="filter-link">All</a>
+    <a href="/dashboard/filter/Task" class="filter-link">Task</a>
+    <a href="/dashboard/filter/Goal" class="filter-link">Goal</a>
+    <a href="/dashboard/filter/Bucket List" class="filter-link">Bucket List</a>
+    <a href="/dashboard/filter/Idea" class="filter-link">Idea</a>
+  </nav>
+    
+  <ul>
+
+    {{#each tasks}}
+    <li>
+      {{> tasks/each-task-block}}
+      <button data-task-id="{{id}}" data-rating="{{rating}}" data-category="{{id}}-category" class="complete-save-btn">Complete and Keep</button>
+      <button data-task-id="{{id}}" data-rating="{{rating}}" class="complete-delete-btn">Complete and Delete</button>
+      <button data-task-id="{{id}}" class="remove-task-btn">Drop</button>
+    </li>
+    {{/each}}
+    {{#if resultsLength}}
+      <a href="/dashboard/more/{{resultsLength}}">Show More</a>
+    {{/if}}
+
+  </ul>
+
+</div>

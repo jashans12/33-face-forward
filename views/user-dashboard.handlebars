@@ -1,0 +1,67 @@
+<header>
+  <h1>face</h1>
+  <h1 class="italicized">forward</h1>
+  <p id="user-name" data-user-id="{{user.id}}">logged in as {{user.firstname}} &nbsp;&nbsp;|
+    <a class="logout-link" href="/logout">logout</a>
+  </p>
+</header>
+
+<div class="user-profile">
+  {{#if user.image_url}}
+  <img src="{{user.image_url}}" alt="user photo" class="user-img"> {{else}}
+  <img src="/assets/images/user-placeholder.jpg" alt="placeholder user image" class="user-img"> {{/if}}
+
+  <div class="user-stats-div">
+    <h3>{{user.firstname}} {{user.lastname}}</h3>
+    <h4>Username: {{user.username}}</h4>
+    <h4>Points: {{toInt user.total_points}}</h4>
+  </div>
+</div>
+
+<div class="routes-div">
+  <a href="/public" id="all-tasks-btn">All Items</a>
+  <a href="/dashboard/complete">My Completed Items</a>
+</div>
+
+<div class="main-content">
+
+  <div class="user-form-div">
+
+    <div class="search-btn-div">
+      <button class="search-div-btn" id="usersearch-tab" onclick="switchForms('usersearch', 'usersearch-tab', 'search-div')">Search Users</button>
+      <button class="search-div-btn" id="newtask-tab" onclick="switchForms('new-task-form', 'newtask-tab', 'search-div')">New Task</button>
+    </div>
+
+    <form class="search-div-form" id="usersearch" name="usersearch">
+      <h3>Search Users</h3>
+      <label for="user-search">Username:</label>
+      <input class="underlined-input" type="text" id="user-search">
+      <input type="submit" name="usersearch" value="Submit" id="user-search-btn">
+    </form>
+
+    <form class="search-div-form" id="new-task-form">
+      <h3>Create New Item</h3>
+      <label for="task-name-input">Item Name:</label>
+      <input class="underlined-input" type="text" name="task-name" id="task-name-input">
+      <label for="task-category">Category:</label>
+      <select name="category-drop" id="task-category">
+        <option class="default-option" value="none-selected">Select an option</option>
+        <option value="Task">Task</option>
+        <option value="Goal">Goal</option>
+        <option value="Bucket List">Bucket List</option>
+        <option value="Idea">Idea</option>
+      </select>
+      <label for="task-steps-input">Steps Needed:</label>
+      <textarea class="underlined-input" name="steps" id="task-steps-input" rows="3"></textarea>
+      <label for="task-criteria-input">Criteria for Completion</label>
+      <textarea class="underlined-input" name="criteria" id="task-criteria-input" rows="3"></textarea>
+      <input type="submit" value="Submit" id="new-task-btn">
+    </form>
+
+  </div>
+
+  <div class="task-display-div">
+    {{> dashboards/user-dashboard-block}}
+  </div>
+
+</div>

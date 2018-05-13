@@ -1,0 +1,71 @@
+Much of the functionality is in place now. Next:
+
+Set it up so a new task you create is permanently associated to you, unless you delete it.
+
+Add a 'created_by' column to tasks and then add functionality to let you delete tasks you created. Set it up so a task can only be deleted if no one else is associated to it.
+
+Add data to task display (in general search results, my tasks, and my completed tasks)
+
+Think of some default task values to load into the db ("exercise 30 minutes a day", "quit smoking", etc.)
+
+First day idea brainstorming:
+
+Some way of signing in.
+Predefined set of tasks
+A way of adding tasks
+A way of opting in to someone else’s tasks
+Once there is more than one person associated to a task, it can’t be changed.
+An option to make a task a competition
+A point system for group tasks
+Creating a theme for the app UI
+
+Possibly incorporate fitness data from a public dataset into some of the pre-defined tasks (because it would probably be too complicated to try to incorporate that into custom tasks) – this is part of the “Nice to have” list
+
+
+********************************************
+
+THOUGHTS:
+
+This whole thing will necessarily have to be based on honesty because most people won't have any way to verify what tasks others have completed. So, I think points should be the same for all custom-created tasks, but there can be a rating system where others rate your tasks (like, say 0-5 stars) and the average of that rating works as a multiplier for your points. So a 10 point task with 5 stars becomes worth 50 points. A 10 point task with no stars would be worth nothing. All tasks would start with 1 star but can be rated a 0 by others, dropping the multiplier and reducing points. So there wouldn't be much incentive in creating stupid tasks, like tying your shoes.
+
+********************************************
+
+Next steps:
+
+Figure out what other columns might be warranted for each user and task based on functionality...
+
+Users: 
+Each user can have a profile with an image: 
+but the image doesn't go in the db, only a reference to an image stored either in app files or pulled from social media (FB, instagram, etc.) - images take up too much space to store and too much server resources to access
+User profile could have:
+name or username
+birthdate
+a picture
+Some kind of rating derived from metrics like dependability, participation, etc. (this is, after all, an accountability task manager)
+how many tasks completed (a link here could query the database to return a list of tasks they've completed)
+how many points they have
+a list of current tasks (or a link to get current tasks from the db) (and a boolean value in the db to make lists public or private)
+
+columns for Users:
+username
+birthdate
+picture location
+Dependability rating based on completed tasks vs. attempted tasks
+total points
+boolean to make lists public or private (or maybe a list of values: public, private, friends)
+
+Columns for Tasks: 
+task_name
+createdAt - possibly get rid of: does this need to be there?
+updatedAt - possibly get rid of: does this need to be there?
+due_date (possibly as a function of the createdAt date in the join table)
+rating
+worthy (a boolean that determines if your task is worth points at all. Is set to true if someone else also picks up your task)
+steps (interim goals, maybe as a bulleted list, if that's possible)
+criteria (conditions for claiming the task is complete)
+
+
+
+Points would have to be calculated by querying all of a person's tasks and calculating based on rating and points. Shouldn't be too difficult...
+
+Here's the big test - from, Jason

@@ -1,0 +1,11 @@
+  {{#if user.image_url}}
+    <img src="{{user.image_url}}" alt="user photo" class="user-img">
+  {{else}}
+    <img src="/assets/images/user-placeholder.jpg" alt="placeholder user image" class="user-img">
+  {{/if}}
+
+<div class="user-stats-div">
+  <h3>{{user.firstname}} {{user.lastname}}</h3>
+  <h4>Username: {{user.username}}</h4>
+  <h4>Points: {{toInt user.total_points}}</h4>
+</div>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <title>faceforward</title>
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/main-style.css">
+    <link rel="stylesheet" href="/assets/css/temp-style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>face<span class="italicized">forward</span>
+        </h1>
+        <p id="user-name" data-user-id="{{user.id}}">logged in as {{user.firstname}} | </p>
+        <nav>
+            <a class="logout-link" href="/logout">logout</a>
+        </nav>
+    </header>
+
+    <div class="user-profile">
+        {{#if user.image_url}}
+        <img src="{{user.image_url}}" alt="user photo" class="user-img"> {{else}}
+        <img src="/assets/images/user-placeholder.jpg" alt="placeholder user image" class="user-img"> {{/if}}
+
+        <div class="user-stats-div">
+            <h3>{{user.firstname}} {{user.lastname}}</h3>
+            <h4>Username: {{user.username}}</h4>
+            <h4>Points: {{toInt user.total_points}}</h4>
+        </div>
+    </div>
+
+    <div class="routes-div">
+        <a href="/public" id="all-tasks-btn">All Items</a>
+        <a href="/dashboard">My Current Items</a>
+        <form id="usersearch" name="usersearch">
+            <label for="user-search">Username Search:</label>
+            <input type="text" id="user-search">
+            <input type="submit" name="usersearch" value="Submit" id="user-search-btn">
+        </form>
+        <form id="tasksearch" name="tasksearch">
+            <label for="user-search">Task Search:</label>
+            <input type="text" id="task-search">
+            <input type="submit" name="tasksearch" value="Submit" id="task-search-btn">
+        </form>
+    </div>
+
+    <div class="main-content">
+
+        <div class="task-form-div">
+            <form id="new-task-form">
+                <h3>Create New</h3>
+                <label for="task-name-input">Item Name</label>
+                <input type="text" name="task-name" id="task-name-input">
+                <label for="task-category">Category:</label>
+                <select name="category-drop" id="task-category">
+                    <option class="default-option" value="none-selected">Select an option</option>
+                    <option value="Task">Task</option>
+                    <option value="Goal">Goal</option>
+                    <option value="Bucket List">Bucket List</option>
+                    <option value="Idea">Idea</option>
+                </select>
+                <label for="task-steps-input">Steps Needed:</label>
+                <textarea name="steps" id="task-steps-input" cols="30" rows="2"></textarea>
+                <label for="task-criteria-input">Criteria for Completion</label>
+                <textarea name="criteria" id="task-criteria-input" cols="30" rows="2"></textarea>
+                <input type="submit" value="Submit" id="new-task-btn">
+            </form>
+        </div>
+
+        <div class="task-display-div">
+            <div class="past-tasks">
+
+                <h3>My Completed Tasks</h3>
+                <ul>
+                    <li>
+                        <p>
+                            {{dataValues.item_name}}
+                        </p>
+                        <p>
+                            {{dataValues.category}}
+                        </p>
+                        <p>
+                            {{dataValues.criteria}}
+                        </p>
+                        <p>
+                            completed date: {{dataValues.createdAt}}
+                        </p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>
+                &#9400;Copyright 2018 JKJ
+            </p>
+        </footer>
+    </div>
+
+    <script src="/assets/js/tasks.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+When development is done:
+
+In auth_controller.js, switch back to res.render 'dashboard' instead of 'myDashboard'.
+
+Also, remove temp-style.css from the public CSS folder.
+
+
+Thoughts about setup / functionality:
+
+New tasks are automatically associated to the one who created them. This may encourage users to only create tasks that are meaningful or useful to them
+
+
+
+
+
+
+When a task is marked complete, in order to both create a record of the completed task and allow the task to be repeated, the complete button must either:
+ a) copy all the data from the task and create a record of it (storing it where?)
+ b) create a new copy of the task, associate it to the user, and mark it complete (which would add a copy of the task in the general list)
+ c) Or...
+  1)  We can reate a new Model (called... Complete?)
+  2)  Complete button:
+    a) takes in relevant data from the task and creates a new record in the Complete table
+    b) associates the Complete record to the user in... UserComplete
+    c) destroys the association in UserTasks
+d) Or...
+  1) Same as c) above, except there are two buttons: Complete and Delete, and Complete and Save. That way, the user only saves tasks they want a record of, and db space is preserved.
