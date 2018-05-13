@@ -166,11 +166,11 @@ exports.taskRate = function (req, res, sequelize) {
             rating_multiplier: newMultiplier
           }, { where: { id: req.body.TaskId } })
             .then(function (result) {
-              // if (result.affectedRows === 0) {
-              //   return res.status(404).end();
-              // } else {
+              if (result.affectedRows === 0) {
+                return res.status(404).end();
+              } else {
               createRating(req, res);
-              // }
+              }
             })
             .catch(function (err) {
               res.json(err);

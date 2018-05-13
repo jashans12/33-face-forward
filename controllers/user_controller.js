@@ -18,11 +18,17 @@ exports.dashboardComplete = function (req, res) {
 }
 
 exports.updateProfile = function (req, res) {
+  var password;
+  if (req.body.password === "") {
+    password = req.user.password;
+  } else {
+    password = generateHash(req.body.password);
+  }
   var userName = req.body.username || req.user.username;
   var firstName = req.body.firstname || req.user.firstname;
   var lastName = req.body.lastname || req.user.lastname;
   var eMail = req.body.email || req.user.email;
-  var passWord = generateHash(req.body.password) || req.user.password;
+  var passWord = password;
   var imageUrl = req.body.image || req.user.image_url;
 
   db.User.update({
